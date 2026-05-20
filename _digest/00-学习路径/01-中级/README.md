@@ -262,4 +262,4 @@ Code review 是中级里最容易被忽视但价值很高的技能。关键不�
 - 如何并行调度多个 agent，让它们同时解决不同的问题
 - 如何用 TDD 的方法论创造新的 Superpowers 技能——扩展这套方法论本身
 
-转向 `_digest/02-高级/README.md`。
+转向 `../02-高级/README.md`。
