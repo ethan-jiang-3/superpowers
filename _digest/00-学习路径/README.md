@@ -12,29 +12,28 @@ Superpowers 是一套面向 AI coding agent 的软件开发方法论，由 **14 
 
 ```mermaid
 graph TD
-    subgraph 入门前提
-        PRE["✅ 会用 AI agent 完成简单编程任务<br/>✅ 理解基本的 git、测试、代码 review"]
+    PRE["✅ 会用 AI agent 完成简单编程任务<br>✅ 理解基本的 git、测试、代码 review"]
+
+    subgraph L1["第一阶段：初级（7 技能）"]
+        direction LR
+        L1a["🎯 目标：能做出来"]
+    end
+
+    subgraph L2["第二阶段：中级（5 技能）"]
+        direction LR
+        L2a["⚡ 目标：更快更好地做出来"]
+    end
+
+    subgraph L3["第三阶段：高级（2 技能）"]
+        direction LR
+        L3a["🔧 目标：扩展方法论本身"]
     end
 
     PRE --> L1
-
-    subgraph 第一阶段：初级
-        L1["🎯 初级 — 7 个技能<br/>目标：能做出来"]
-    end
-
-    L1 --> CHECK1{"完成 3-5 个<br/>初级项目？"}
+    L1 --> CHECK1{"完成 3-5 个<br>初级项目？"}
     CHECK1 -->|"TDD 已养成习惯"| L2
-
-    subgraph 第二阶段：中级
-        L2["⚡ 中级 — 5 个技能<br/>目标：更快更好地做出来"]
-    end
-
-    L2 --> CHECK2{"熟练 SDD 执行<br/>10+ task 项目？"}
+    L2 --> CHECK2{"熟练 SDD 执行<br>10+ task 项目？"}
     CHECK2 -->|"遇到真实并行需求"| L3
-
-    subgraph 第三阶段：高级
-        L3["🔧 高级 — 2 个技能<br/>目标：扩展方法论本身"]
-    end
 
     style L1 fill:#e3f2fd
     style L2 fill:#e8f5e9
@@ -46,15 +45,15 @@ graph TD
 ## 三个层级
 
 ```mermaid
-graph BT
+graph TB
     subgraph 高级
         A2["并行调度 agent"]
-        A1["创造新技能<br/>（元 TDD）"]
+        A1["创造新技能<br>（元 TDD）"]
     end
 
     subgraph 中级
         B1["Git Worktrees"]
-        B2["Subagent-Driven<br/>Development"]
+        B2["Subagent-Driven<br>Development"]
         B3["系统化调试"]
         B4["请求 Code Review"]
         B5["接收 Code Review"]
@@ -69,17 +68,11 @@ graph BT
         C6["验证"]
         C7["收尾分支"]
     end
-
-    初级 --> 中级 --> 高级
-
-    style 初级 fill:#bbdefb
-    style 中级 fill:#c8e6c9
-    style 高级 fill:#ffe0b2
 ```
 
-**关键理解：每一层叠加在上一层之上，不替代。**
+三层之间是递进叠加关系：初级 → 中级 → 高级。每一层叠加在上一层之上，不替代。
 
-初级技能在高级阶段仍然全量运行。即使用上了并行 agent 调度，TDD 仍然是质量底线，verification 仍然是证据门禁。
+**关键理解：初级技能在高级阶段仍然全量运行。** 即使用上了并行 agent 调度，TDD 仍然是质量底线，verification 仍然是证据门禁。
 
 ---
 
@@ -89,10 +82,10 @@ graph BT
 
 ```mermaid
 graph LR
-    B["🎯 brainstorming<br/>设计 → spec"] --> P["📝 writing-plans<br/>spec → plan"]
-    P --> E["⚙️ executing-plans<br/>逐步实现 task"]
-    E --> V["✅ verification<br/>跑验证证据"]
-    V --> F["🏁 finishing<br/>4 选项收尾"]
+    B["🎯 brainstorming<br>设计 → spec"] --> P["📝 writing-plans<br>spec → plan"]
+    P --> E["⚙️ executing-plans<br>逐步实现 task"]
+    E --> V["✅ verification<br>跑验证证据"]
+    V --> F["🏁 finishing<br>4 选项收尾"]
 
     style B fill:#e3f2fd
     style P fill:#e3f2fd
@@ -121,17 +114,17 @@ graph LR
 ```mermaid
 graph TD
     subgraph 环境准备
-        W["🔒 using-git-worktrees<br/>隔离工作区"]
+        W["🔒 using-git-worktrees<br>隔离工作区"]
     end
 
     subgraph 核心增强
-        SDD["🚀 subagent-driven-development<br/>每 task 独立 subagent<br/>两阶段 review"]
-        DBG["🔍 systematic-debugging<br/>4 阶段根因分析<br/>禁止猜测"]
+        SDD["🚀 subagent-driven-development<br>每 task 独立 subagent<br>两阶段 review"]
+        DBG["🔍 systematic-debugging<br>4 阶段根因分析<br>禁止猜测"]
     end
 
     subgraph 质量增强
-        REQ["👀 requesting-code-review<br/>独立 reviewer 最终审查"]
-        REC["📬 receiving-code-review<br/>技术评估反馈"]
+        REQ["👀 requesting-code-review<br>独立 reviewer 最终审查"]
+        REC["📬 receiving-code-review<br>技术评估反馈"]
     end
 
     W --> SDD
@@ -158,8 +151,8 @@ graph TD
 
 ```mermaid
 graph TD
-    PARA["🔄 dispatching-parallel-agents<br/>多个独立问题同时解决<br/>3 个 agent = 1 份时间"]
-    SKILL["🏗️ writing-skills<br/>用 TDD 创造新技能<br/>RED→GREEN→REFACTOR"]
+    PARA["🔄 dispatching-parallel-agents<br>多个独立问题同时解决<br>3 个 agent = 1 份时间"]
+    SKILL["🏗️ writing-skills<br>用 TDD 创造新技能<br>RED → GREEN → REFACTOR"]
 
     style PARA fill:#fff3e0
     style SKILL fill:#fff3e0
