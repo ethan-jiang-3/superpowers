@@ -95,7 +95,7 @@ Superpowers 覆盖了常见场景，但你的项目可能遇到它没覆盖的�
 
 ### 学习顺序
 
-**第一步：dispatching-parallel-agents（00）**
+**第一步：dispatching-parallel-agents（20）**
 
 等一个真实的并行场景再学——不要为了学而创造场景。当你面对 3+ 个独立的测试失败或 bug，且你确认它们互不干扰时，用这个技能分派并行 agent。
 
@@ -104,7 +104,7 @@ Superpowers 覆盖了常见场景，但你的项目可能遇到它没覆盖的�
 - 每个 agent 的提示词怎么写才能让它聚焦且不越界？
 - 结果整合——三个 agent 有没有改同一个文件？有没有冲突？
 
-**第二步：writing-skills（01）**
+**第二步：writing-skills（21）**
 
 这是 Superpowers 的"终极技能"。只有当你在实际工作中遇到"Superpowers 没有覆盖这个场景"的情况时，才需要学它。
 
@@ -125,8 +125,8 @@ Superpowers 覆盖了常见场景，但你的项目可能遇到它没覆盖的�
 
 | 序号 | 文件 | 技能名 | 类型 | 一句话 |
 |------|------|--------|------|--------|
-| 00 | `00-dispatching-parallel-agents.md` | dispatching-parallel-agents | 柔性/模式 | 把多个独立问题分派给并行 agent，同时解决 |
-| 01 | `01-writing-skills.md` | writing-skills | 刚性/元技能 | 用 TDD 的方法论创造新技能：RED（baseline）→ GREEN（写技能）→ REFACTOR（堵漏洞） |
+| 20 | `20-dispatching-parallel-agents.md` | dispatching-parallel-agents | 柔性/模式 | 把多个独立问题分派给并行 agent，同时解决 |
+| 21 | `21-writing-skills.md` | writing-skills | 刚性/元技能 | 用 TDD 的方法论创造新技能：RED（baseline）→ GREEN（写技能）→ REFACTOR（堵漏洞） |
 
 ---
 

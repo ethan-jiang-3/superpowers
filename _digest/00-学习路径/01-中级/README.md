@@ -123,41 +123,113 @@
 
 ---
 
-## 完整工作流（中级增强版）
+## 完整工作流（中级增强版，含全层级编号）
+
+```
+SDLC 中的位置（编号即管线次序）：
+
+  00 ─ using-superpowers ──────────────────── 调度（session 全程）
+       |
+  01 ─ brainstorming ──────────────────────── 设计：想法 → spec
+       |
+  02 ─ writing-plans ──────────────────────── 计划：spec → 可执行 plan
+       |
+  10 ─ using-git-worktrees ────────────────── 环境：创建隔离工作区（执行前）
+       |
+  03 ─ executing-plans ────────────────────── 执行：逐 task 实现
+  11 ── subagent-driven-development ────────  增强：每 task 独立 subagent + 两阶段 review
+  04 ─── test-driven-development ───────────  纪律：RED → GREEN → REFACTOR（每个 task 内）
+  12 ─── systematic-debugging ──────────────  调试：遇到 bug → 4 阶段根因分析
+       |
+  05 ─ verification-before-completion ─────── 验证：跑命令，拿证据
+  13 ── requesting-code-review ─────────────  审查：独立 reviewer 整体审查
+  14 ─── receiving-code-review ─────────────  反馈：技术评估 → 修复
+       |
+  06 ─ finishing-a-development-branch ─────── 收尾：merge / PR / 丢弃 / 保留
+
+  20 ─ dispatching-parallel-agents ────────── 替代执行：独立问题并行分派（替代 03+11 的串行模式）
+  21 ─ writing-skills ─────────────────────── 元技能：用 TDD 创造新技能
+```
 
 ```mermaid
 graph TD
-    subgraph 环境准备
-        A["using-git-worktrees<br/>检测隔离 → 创建/验证工作区"] --> B["using-superpowers<br/>技能调度"]
+    subgraph 调度["00 调度层"]
+        US["00 using-superpowers<br/>技能发现与调度中心<br/>1% rule + Red Flags"]
     end
 
-    subgraph 设计不变
-        B --> C["brainstorming<br/>设计 → spec"]
-        C --> D["writing-plans<br/>spec → plan"]
+    subgraph 设计["01-02 设计层（初级）"]
+        BS["01 brainstorming<br/>想法 → spec → 用户批准"]
+        WP["02 writing-plans<br/>spec → 可执行 task 清单"]
     end
 
-    subgraph 中级核心增强
-        D --> E["subagent-driven-development<br/>每个 task: 实现subagent → spec review → code review"]
-        E --> F{"遇到 bug?"}
-        F -->|是| G["systematic-debugging<br/>Phase 1-4 科学调试"]
-        G --> E
-        F -->|否| H["verification-before-completion<br/>每个 task 后验证"]
+    subgraph 环境["10 环境准备（中级）"]
+        WT["10 using-git-worktrees<br/>创建隔离工作区<br/>保护主分支"]
     end
 
-    subgraph 质量增强
-        H --> I["requesting-code-review<br/>最终 code reviewer 整体审查"]
-        I --> J["receiving-code-review<br/>技术评估反馈 → 修复"]
+    subgraph 执行["03-04 + 11-12 执行层（初级 + 中级增强）"]
+        EP["03 executing-plans<br/>逐 task 执行，遇阻即停"]
+        SDD["11 subagent-driven-development<br/>每 task 独立 subagent<br/>spec review → code review"]
+        TDD["04 test-driven-development<br/>RED → GREEN → REFACTOR<br/>NO PRODUCTION CODE WITHOUT FAILING TEST"]
+        DBG["12 systematic-debugging<br/>4 阶段根因分析<br/>NO FIXES WITHOUT ROOT CAUSE"]
     end
 
-    subgraph 收尾
-        J --> K["finishing-a-development-branch<br/>验证 → 4 选项 → 清理"]
+    subgraph 验证["05 + 13-14 验证层（初级 + 中级增强）"]
+        VBC["05 verification-before-completion<br/>跑命令 → 拿证据 → 声称完成<br/>NO COMPLETION CLAIMS WITHOUT EVIDENCE"]
+        RCR["13 requesting-code-review<br/>独立 reviewer 整体审查"]
+        RCV["14 receiving-code-review<br/>技术评估，非情绪反应"]
     end
 
-    style E fill:#e8f5e9
-    style G fill:#ffcdd2
-    style I fill:#fff3e0
-    style J fill:#fff3e0
+    subgraph 收尾["06 收尾层（初级）"]
+        FDB["06 finishing-a-development-branch<br/>验证测试 → 选 4 选项 → 清理"]
+    end
+
+    subgraph 高级["20-21 高级层（元方法）"]
+        PARA["20 dispatching-parallel-agents<br/>独立问题并行分派<br/>3 个 agent = 1 份时间"]
+        SKILL["21 writing-skills<br/>用 TDD 创造新技能<br/>RED baseline → GREEN skill → REFACTOR"]
+    end
+
+    US --> BS
+    BS --> WP
+    WP --> WT
+    WT --> EP
+    EP -.->|"每个 task"| SDD
+    SDD -.->|"task 内"| TDD
+    EP -.->|"遇到 bug"| DBG
+    DBG -.->|"修复后继续"| EP
+    EP --> VBC
+    VBC --> RCR
+    RCR --> RCV
+    RCV --> FDB
+
+    EP -.->|"替代：独立问题"| PARA
+    PARA -.->|"结果整合"| VBC
+    SKILL -.->|"创造/改进"| US
+
+    style US fill:#e1f5fe
+    style BS fill:#fff3e0
+    style WP fill:#fff3e0
+    style WT fill:#e8f5e9
+    style EP fill:#e8f5e9
+    style SDD fill:#c8e6c9
+    style TDD fill:#fce4ec
+    style DBG fill:#ffcdd2
+    style VBC fill:#fce4ec
+    style RCR fill:#fff3e0
+    style RCV fill:#fff3e0
+    style FDB fill:#e8f5e9
+    style PARA fill:#fff9c4
+    style SKILL fill:#fff9c4
 ```
+
+**读图方式：**
+- 实线箭头 = 管线流转（上一个阶段完成 → 进入下一个）
+- 虚线箭头 = 增强关系（在执行阶段内部叠加，不替代主流程）
+- 蓝色/橙色 = 初级技能（00-06），管线骨干
+- 绿色 = 中级环境/执行增强（10-11）
+- 红色 = 刚性 Iron Law 技能（04, 05, 12, 14）
+- 黄色 = 高级元技能（20-21），替代/扩展管线
+- TDD（04）贯穿所有 task 实现，不管是用 SDD（11）还是串行执行（03）
+- 高级层（20-21）在管线之外——它们是管线的替代模式（20）和管线的制造工具（21）
 
 ### 中级的典型一次 task 执行流程
 
@@ -209,22 +281,22 @@ graph TD
 
 ### 学习顺序
 
-**第一步：using-git-worktrees（00）**
+**第一步：using-git-worktrees（10）**
 
 这是中级里最简单的技能，但也是基础。学会创建隔离工作区——不管是用平台的 EnterWorktree 还是手动 git worktree add。养成习惯：每次开始新 feature 之前，先在隔离环境中工作。
 
-**第二步：subagent-driven-development（01）**
+**第二步：subagent-driven-development（11）**
 
 这是中级里最核心、价值最大的技能。找一个你已经写好 plan 的项目（从你的初级练习中找一个），然后用 SDD 执行它。体验：
 - Subagent 执行一个 task 有多快？（vs 你自己在当前 session 中执行）
 - 两阶段 review 发现了什么你没想到的问题？
 - Context 隔离的效果——subagent 没有你的 session 历史，它是不是更专注？
 
-**第三步：systematic-debugging（02）**
+**第三步：systematic-debugging（12）**
 
 等你在 SDD 项目中遇到一个不那么明显的 bug 时（一定会遇到的），走一遍 4 阶段流程。对比一下你以前的"猜-试-猜-试"模式，看看系统化方法花多少时间、猜的方法花多少时间。
 
-**第四步：code review 双技能（03 + 04）**
+**第四步：code review 双技能（13 + 14）**
 
 Code review 是中级里最容易被忽视但价值很高的技能。关键不是"让 agent review 代码"这个动作——而是**用正确的态度接受 review 反馈**。`receiving-code-review` 教的"技术评估而非情绪反应"的思维模式，不只适用于 code review——它适用于你（和你的 agent）收到任何技术反馈的场景。
 
@@ -242,11 +314,11 @@ Code review 是中级里最容易被忽视但价值很高的技能。关键不�
 
 | 序号 | 文件 | 技能名 | 类型 | 一句话 |
 |------|------|--------|------|--------|
-| 00 | `00-using-git-worktrees.md` | using-git-worktrees | 柔性 | 创建隔离工作区，保护主分支不受开发中的变更影响 |
-| 01 | `01-subagent-driven-development.md` | SDD | 柔性 | 每个 task 一个独立 subagent，两阶段 review（spec + code quality） |
-| 02 | `02-systematic-debugging.md` | systematic-debugging | 刚性 | 4 阶段根因分析：调查→模式→假设→修复，禁止猜测 |
-| 03 | `03-requesting-code-review.md` | requesting-code-review | 柔性 | 派发 code reviewer subagent，在问题扩散前捕获 |
-| 04 | `04-receiving-code-review.md` | receiving-code-review | 刚性 | 技术评估反馈，而非表演式接受或防御式拒绝 |
+| 10 | `10-using-git-worktrees.md` | using-git-worktrees | 柔性 | 创建隔离工作区，保护主分支不受开发中的变更影响 |
+| 11 | `11-subagent-driven-development.md` | SDD | 柔性 | 每个 task 一个独立 subagent，两阶段 review（spec + code quality） |
+| 12 | `12-systematic-debugging.md` | systematic-debugging | 刚性 | 4 阶段根因分析：调查→模式→假设→修复，禁止猜测 |
+| 13 | `13-requesting-code-review.md` | requesting-code-review | 柔性 | 派发 code reviewer subagent，在问题扩散前捕获 |
+| 14 | `14-receiving-code-review.md` | receiving-code-review | 刚性 | 技术评估反馈，而非表演式接受或防御式拒绝 |
 
 ---
 

@@ -168,9 +168,9 @@ graph TD
 |---|------|------|------|--------|
 | 1 | 初级 | `using-superpowers` | 柔性/调度 | 技能发现与调度中心，整个 session 的"操作系统" |
 | 2 | 初级 | `brainstorming` | 柔性/关卡 | 在写代码之前先做设计：需求 → spec |
-| 3 | 初级 | `test-driven-development` | **刚性/Iron Law** | RED → GREEN → REFACTOR，不可商量 |
-| 4 | 初级 | `writing-plans` | 柔性/关卡 | spec → 可执行的实现 plan |
-| 5 | 初级 | `executing-plans` | 柔性/操作 | 逐 task 执行 plan，每 task 跑 TDD |
+| 3 | 初级 | `writing-plans` | 柔性/关卡 | spec → 可执行的实现 plan |
+| 4 | 初级 | `executing-plans` | 柔性/操作 | 逐 task 执行 plan，每 task 跑 TDD |
+| 5 | 初级 | `test-driven-development` | **刚性/Iron Law** | RED → GREEN → REFACTOR，不可商量 |
 | 6 | 初级 | `verification-before-completion` | **刚性/Iron Law** | 没有验证证据 = 没有完成 |
 | 7 | 初级 | `finishing-a-development-branch` | 柔性/关卡 | 4 选项收尾：merge / PR / archive / discard |
 | 8 | 中级 | `using-git-worktrees` | 柔性/环境 | 创建隔离工作区，保护主分支 |
@@ -195,7 +195,7 @@ graph TD
 
 1. **初级全部（7 技能）**：按 00→06 顺序，每个学完再进下一个。初级是一根管线，跳步 = 后面的技能基础不稳
 2. **做 3-5 个初级项目**：巩固 TDD 习惯，直到"先写测试"不需要有意识提醒
-3. **中级全部（5 技能）**：按 00→04 顺序，SDD 是核心价值最大的技能
+3. **中级全部（5 技能）**：按 10→14 顺序，SDD 是核心价值最大的技能
 4. **做 10+ 个 SDD 项目**：熟练 subagent 调度、两阶段 review、系统化调试
 5. **高级（2 技能）**：等真实需求出现——不要为了学而学
 
