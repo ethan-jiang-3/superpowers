@@ -14,6 +14,8 @@ Superpowers 有很多反直觉的设计决策：
 
 这些不是随意设计的——背后有对 agent 行为的深刻理解、说服心理学的研究支撑、以及大量对抗测试的实证数据。
 
+还有第 6 个问题：为什么没有 CLI？纯 prompt 触发在上下文混乱时会不会失效？
+
 这个目录就是挖掘这些"为什么"。
 
 ---
@@ -33,7 +35,7 @@ Superpowers 的设计哲学本质上是关于"怎么让 LLM agent 在压力下�
 
 ---
 
-## 5 个核心设计问题
+## 6 个核心设计问题
 
 | # | 设计问题 | 核心张力 | 对应文件 |
 |---|---------|---------|---------|
@@ -42,6 +44,7 @@ Superpowers 的设计哲学本质上是关于"怎么让 LLM agent 在压力下�
 | 3 | 为什么"看起来完成了"不等于"完成了"？ | 信任 vs 验证 | `02-证据先行` |
 | 4 | "your human partner" 不只是话术——它背后的行为设计是什么？ | 工具关系 vs 合作关系 | `03-human-partner框架` |
 | 5 | 为什么 description 写工作流会导致 agent 跳过技能？ | 搜索优化 vs 行为引导 | `04-CSO描述陷阱` |
+| 6 | 为什么没有 CLI？纯 prompt 触发在上下文混乱时会不会失效？ | 自主判断 vs 确定性调用 | `05-命令行与技能触发` |
 
 ---
 
@@ -69,6 +72,7 @@ Superpowers 的设计哲学本质上是关于"怎么让 LLM agent 在压力下�
 | 02 | `02-证据先行.md` | Verificationism 的设计哲学：为什么"agent 说完成了"不可信；24 个真实失败案例的分类学；verification-before-completion 的 4 条验证原则；这和 TDD 的"先看测试失败"是同构的 |
 | 03 | `03-human-partner框架.md` | "your human partner" 的行为设计意图：建立合作关系而非工具使用关系；承诺一致性原理（agent 同意了"partner"身份 = 更难合理化背弃行为）；统一性原理（Unity）在 prompt 设计中的应用；为什么 CLAUDE.md 用"protect your human partner from that outcome"来激活防御性动机 |
 | 04 | `04-CSO描述陷阱.md` | Claude Search Optimization 的核心发现：description 写工作流 = agent 只读 description 跳过技能正文；SDD 的真实案例（原本 description 含工作流 → agent 做了单阶段 review）；这个陷阱的深层原因（agent 的 attention 机制和信息搜寻行为）；怎么设计一个"好的" description |
+| 05 | `05-命令行与技能触发.md` | Superpowers 没有任何 CLI 或 slash command（曾经有但 v5.1.0 删除了）；技能触发完全依赖 prompt 层的 1% rule + Red Flags 表，没有运行时强制执行；5 个已记录的触发失败模式（CSO 陷阱、"I know what that means"、brainstorming 跳过、bootstrap 竞态、subagent gap）；为什么是设计选择而不是疏忽；CLI 可以解决的 gap 和不同方案的设计权衡 |
 
 ---
 

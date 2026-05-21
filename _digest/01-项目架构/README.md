@@ -49,10 +49,11 @@
 
 | 序号 | 文件 | 研究问题 |
 |------|------|---------|
-| 00 | `00-bootstrap与技能加载.md` | 从 `hooks/session-start` 到 `using-superpowers` 的完整链路：hook 触发 → 技能发现 → 技能匹配 → 技能加载。为什么这套链路是 Superpowers 的"脊柱" |
-| 01 | `01-多平台适配.md` | 5 个平台的适配层对比：Claude Code、Codex、Cursor、OpenCode、Gemini CLI。各自怎么加载 bootstrap？哪些平台用了原生 hook，哪些用了 fallback？ |
-| 02 | `02-CLAUDE.md的设计.md` | 106 行的信息密度分析：什么内容放在最前面？为什么"Stop. Read this section before doing anything." 是第一句？Agent 行为规则的写法有什么讲究？ |
-| 03 | `03-测试体系.md` | Headless session 是什么？怎么用 subagent 模拟真实 agent 行为来测试技能？测试一个 discipline-enforcing 技能（如 TDD）和测试一个 technique 技能（如 condition-based-waiting）有什么不同？ |
+| 00 | `00-目录结构与工程约定.md` | Skill 对用户项目目录有什么假设？三层约定（Superpowers 路由/Plan 结构/用户覆盖）各负责什么？真实 spec/plan 的信息密度对比。Worktree 为什么难、Superpowers 怎么解的 |
+| 01 | `01-bootstrap与技能加载.md` | 从 `hooks/session-start` 到 `using-superpowers` 的完整 7 阶段链路：hook 触发 → polyglot wrapper → JSON 注入 → 平台特定路径 → skill 匹配 → 贡献者指令 |
+| 02 | `02-多平台适配.md` | 6 个平台的适配层逐一分析：Claude Code、Cursor、Codex、Gemini CLI、OpenCode、Copilot CLI。三层适配架构（注入/发现/翻译）。工具名映射表 |
+| 03 | `03-CLAUDE.md的设计.md` | 106 行的行为编程分析：5 个设计技术（第一句阻断、具体拒绝类别、操作定义验收、保护 partner 框架、倒推 checklist）。为什么 106 行够用 |
+| 04 | `04-测试体系.md` | 三层测试架构：快速测试 → 集成测试 → GATE+对抗测试。Headless session 原理。RED-GREEN-REFACTOR for skills。测试基础设施总览 |
 
 ---
 
