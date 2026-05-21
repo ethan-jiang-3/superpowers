@@ -377,9 +377,9 @@ sequenceDiagram
 |------|------|------|------|------|--------|
 | 00 | using-superpowers | 总调度 | 用户消息 | 技能调用决策 | 确保正确的技能在正确的时间被触发 |
 | 01 | brainstorming | 设计 | 模糊想法 | 设计文档（spec） | 把想法变成经过审视的设计 |
-| 02 | test-driven-development | 编码纪律 | 要实现的功能 | 测试→代码→重构 | 每个 task 执行时的质量底线 |
-| 03 | writing-plans | 计划 | spec | 可执行的任务清单 | 把设计变成精确到代码的实施步骤 |
-| 04 | executing-plans | 执行 | plan | 完成的代码 | 逐项执行，遇阻即停 |
+| 02 | writing-plans | 计划 | spec | 可执行的任务清单 | 把设计变成精确到代码的实施步骤 |
+| 03 | executing-plans | 执行 | plan | 完成的代码 | 逐项执行，遇阻即停 |
+| 04 | test-driven-development | 编码纪律 | 要实现的功能 | 测试→代码→重构 | 每个 task 执行时的质量底线 |
 | 05 | verification-before-completion | 验证 | 代码变更 | 验证证据 | 声称之前先证明 |
 | 06 | finishing-a-development-branch | 收尾 | 完成的代码 | merge/PR/丢弃 | 结构化地结束开发 |
 
@@ -533,9 +533,9 @@ Agent 说"完成了"，你没让它跑测试就接受了。后来发现功能根
 |------|------|--------|------|--------|
 | 00 | `00-using-superpowers.md` | using-superpowers | 刚性/调度 | 整个 Superpowers 系统的总入口，确保正确的技能在正确的时间被触发 |
 | 01 | `01-brainstorming.md` | brainstorming | 柔性/阶段门禁 | 写代码之前先设计，把模糊想法变成完整的设计方案 |
-| 02 | `02-test-driven-development.md` | TDD | 刚性/持续 | RED → GREEN → REFACTOR，没有失败的测试不写代码 |
-| 03 | `03-writing-plans.md` | writing-plans | 柔性/阶段门禁 | 把 spec 拆成精确到代码和命令的可执行任务清单 |
-| 04 | `04-executing-plans.md` | executing-plans | 柔性/阶段门禁 | 逐步执行 plan，遇阻即停，不盲从 |
+| 02 | `02-writing-plans.md` | writing-plans | 柔性/阶段门禁 | 把 spec 拆成精确到代码和命令的可执行任务清单 |
+| 03 | `03-executing-plans.md` | executing-plans | 柔性/阶段门禁 | 逐步执行 plan，遇阻即停，不盲从 |
+| 04 | `04-test-driven-development.md` | TDD | 刚性/持续 | RED → GREEN → REFACTOR，没有失败的测试不写代码 |
 | 05 | `05-verification-before-completion.md` | verification-before-completion | 刚性/持续 | 声称完成之前先跑验证命令，拿证据 |
 | 06 | `06-finishing-a-development-branch.md` | finishing-a-development-branch | 柔性/阶段门禁 | 完成开发的结构化收尾：合并/PR/保持/丢弃 |
 
